@@ -1,0 +1,8 @@
+﻿{
+  "name": "空白的新标签页",
+  "version": "0.1",
+  "chrome_url_overrides": {
+    "newtab": "blank.html"
+  }
+}
+

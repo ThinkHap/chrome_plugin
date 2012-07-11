@@ -1,0 +1,48 @@
+<head>
+<style>
+
+.layout{
+	width:350px;
+}
+</style>
+<script>
+
+function setChildTextNode(elementId, text) {
+  document.getElementById(elementId).innerText = text;
+}
+
+// Tests the roundtrip time of sendRequest().
+function testRequest(value) {
+	chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.sendRequest(tab.id, {qs: value}, function(response) {
+			document.getElementById('resultsRequest').innerHTML="符合选择器的元素一共有<strong style='color:red'>"+ response.length+"</strong>个元素。";
+			document.getElementById('msg').style.display = "block";
+		});
+	});
+}
+
+
+  
+</script>
+</head>
+<body>
+<div class="layout">
+  <div>
+      <p>在下面输入你的automan选择器</p>
+  </div>
+  
+   <div>
+	   <input type="text" value="" id="J_Submit"/>
+	   <button onclick="testRequest(document.getElementById('J_Submit').value)">check</button>
+	   
+   </div>
+    <div id="resultsRequest" class="results"></div>
+	
+	<div id="msg" style="display:none;">
+	<p>(已经标注边框）</p>
+	具体按ctrl+shift+I快捷键打开控制台查看
+	</div>
+</div>
+
+</div>
+</body>

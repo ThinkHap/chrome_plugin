@@ -1,0 +1,14 @@
+{
+    "app": {
+        "launch": {
+            "web_url": "http://ThinkHap.com"
+        },
+        "urls": ["http://ThinkHap.com"]
+    },
+    "name": "ThinkHap's Blog",
+    "version": "1.0",
+    "description": "ThinkHap's Blog",
+    "icons": {
+        "128": "hap.png"
+    }
+}

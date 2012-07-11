@@ -1,0 +1,71 @@
+﻿<head>
+<link rel="stylesheet" href="reset.css" /> 
+<style>
+.layout{
+	width:350px;
+	margin-top: 12px;
+}
+#content .item{
+	margin-bottom: 12px;
+	margin-left: 18px;
+}
+#content .item p{
+	margin:0;
+}
+.block button{
+	padding:2px 3px;
+}
+#content .item p input{
+	width: 250px;
+}
+#content .item label{
+	font-size:14px;
+}
+.block{
+	margin-bottom: 12px;
+	text-align: center;
+}
+.block p{
+		margin-bottom: 10px;
+}
+.block button{}
+</style>
+<script src="kissy.js">
+	
+</script>
+<script>
+
+
+// Tests the roundtrip time of sendRequest().
+function sendGetUrl(value) {
+	chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.sendRequest(tab.id, {qs: value}, function(response) {
+	
+			KISSY.each(response.fileList, function(value,key){
+				var p = KISSY.DOM.create("<div class='item'><p><label>文件： "+value.split('~&~')[0]+"</label></p><p>链接：<input title='手动复制里面的地址吧' type='text' value='"+value.split('~&~')[1]+"' /></p></div>");
+				document.getElementById('content').appendChild(p);
+			});
+		});
+	});
+}
+
+
+  
+</script>
+</head>
+<body>
+<div class="layout">
+  <div class="block">
+      <p>获取微盘文件链接地址插件。支持<a href="http://stoneleilei.wordpress.com/">我的blog</a></p>
+	  <button onclick="sendGetUrl(true);">点击提取文件链接地址</button>
+  </div>
+  
+  <div id="content">
+  
+  </div>
+  <div class="msg">
+	  
+  </div>
+</div>
+
+</body>

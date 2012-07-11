@@ -1,0 +1,24 @@
+{
+    "name": "埋点检测工具@etao.com",
+    "version": "1.0",
+    "description": "方便快捷一键检测页面埋点布置情况@一淘网站埋点检测工具",
+    "permissions": [
+        "tabs", "notifications", "http://*.etao.com/*", "https://*.etao.com/*", "http://*.etao.daily.net/*", "http://*.etao.net/*"
+    ],
+    "browser_action": {
+          "default_icon": "hap.png",
+          "popup": "popup.html"
+    },
+    "background_page": "background.html",
+    "content_scripts": [
+        {
+            "matches": ["http://*.etao.com/*", "https://*.etao.com/*", "http://*.etao.daily.net/*", "http://*.etao.net/*"],
+            "js": ["kissy-min.js"]
+        }
+    ]
+}
+
+// 1.检测PV埋点
+// 2.需要埋点的地方都高亮，不管是否正确
+// 3.检测埋点请求是否发出
+// 4.鼠标悬浮时读取埋点数据并显示出来

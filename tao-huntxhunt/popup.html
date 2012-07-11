@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GBK" />
+<link rel="stylesheet" type="text/css" href="reset.css" />
+<style type="text/css">
+#wrapper {
+	width: 300px !important;
+	height: 450px !important;
+	background: -webkit-gradient(linear, left top, left bottom, from(white),
+		to(#BCBCBC), color-stop(0.20, #BCBCBC), color-stop(1.0, #BCBCBC) )
+		!important;
+	position: relative;
+}
+
+.sidebar {
+	width: 100%;
+	height: 3px;
+	overflow: hidden;
+	display: table;
+}
+
+.sidebar.bottom {
+	position: absolute;
+	bottom: 0px;
+}
+
+.sidebar div {
+	display: table-cell;
+}
+
+.sidebar .color1 {
+	width: 22%;
+	background-color: #FF0000;
+}
+
+.sidebar .color2 {
+	width: 4%;
+	background-color: #990033;
+}
+
+.sidebar .color3 {
+	width: 22%;
+	background-color: #000099;
+}
+
+.sidebar .color4 {
+	width: 5%;
+	background-color: #CC6600;
+}
+
+.sidebar .color5 {
+	width: 22%;
+	background-color: #FFCC00;
+}
+
+.sidebar .color6 {
+	width: 4%;
+	background-color: #999900;
+}
+
+.sidebar .color7 {
+	width: 22%;
+	background-color: #99CC00;
+}
+
+#main {
+	position: absolute;
+	left: 0;
+	top: 3px;
+	right: 0;
+	bottom: 3px;
+}
+
+#search {
+	margin: 6px 6px;
+	border: 1px solid #CCC !important;
+	height: 22px !important;
+	background-color: white;
+	-webkit-border-radius: 6px;
+	font-size: 0.6em;
+}
+
+#search[focused] {
+	border: 1px solid #84AAEB !important;
+}
+
+#search .text {
+	width: 256px;
+	height: 15px;
+	margin-top: 3px;
+	padding-top: 2px;
+	padding-left: 3px;
+	outline: none !important;
+	border: none !important;
+}
+
+#search .button {
+	float: right;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-spacing: 0px;
+	padding: 0px;
+	background: url("images/search.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#content {
+	position: absolute;
+	top: 34px;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+}
+
+#status {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 30px;
+	background: green;
+}
+
+#status > div{
+    overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#tabs {
+	margin-top: 5px;
+	border-bottom: 1px solid #959595;
+	height: 26px;
+	cursor: default;
+	font-family: Verdana, Arial, Helvetica, "Trebuchet MS", Tahoma, Geneva,
+		"Lucida Sans Unicode", "Lucida Grande", "MS Sans Serif",
+		sans-serif !important;
+	font-size: 0.9em;
+	overflow: visible;
+	color: black;
+}
+
+.tab {
+	display: inline-block;
+	margin-left: 3px;
+	float: left;
+	-webkit-border-radius: 6px 6px 0px 0px;
+	border-width: 1px 1px 0px 1px;
+	border-color: #B7BABF;
+	border-style: solid;
+	margin-top: 3px;
+	font-size: 11px;
+	padding: 4px 9px;
+	height: 23px;
+}
+
+.tab.active {
+	margin-top: 0;
+	background: white;
+	padding-top: 5px;
+}
+#taobaohome {
+	margin: 5px 1px 1px 1px;
+	padding: 1px 1px 1px 0px;
+	height: 17px;
+	float: right;
+	position: relative;
+	border: 1px solid transparent;
+}
+
+#taobaohome:hover {
+	margin: 5px 1px 1px 1px;
+	padding: 1px 1px 1px 0px;
+	border: 1px solid #C3CFDC;
+	-webkit-border-radius: 6px 6px 6px 6px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FAFCFF),
+		to(#F1F6FC), color-stop(0.5, #FAFCFF), color-stop(1.0, #F1F6FC) );
+	-webkit-background-origin: border-box;
+	-webkit-background-clip: border-box;
+}
+
+#taobaohome .home-button {
+	background: url("images/home-button.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 14px;
+	height: 16px;
+	margin-right:-2px;
+	display: inline-block;
+}
+
+#taobaohome .home-drop {
+	background: url("images/home-drop.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 5px;
+	height: 16px;
+	margin-right: 2px;
+	display: inline-block;
+}
+
+#taobaohomepopup {
+	position: absolute;
+	right: 3px;
+	top: 13px;
+	width: 90px;
+	border: 1px solid #959595;
+	border-spacing: 0px;
+	background-color: white;
+	z-index: 1;
+	font-size: 0.8em;
+	display: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#taobaohomepopup>li {
+	width: 90px;
+	height: 20px;
+}
+
+#taobaohomepopup>li a {
+	display: block;
+	text-decoration: none;
+	width: 80px;
+	padding: 2px 2px 2px 8px;
+	height: 16px;
+	line-height: 16px;
+	color: black;
+}
+
+#taobaohomepopup>li.sep {
+	height: 10px;
+	overflow: hidden;
+}
+
+#taobaohomepopup>li.sep hr {
+	margin: 4px 0px;
+}
+
+#taobaohomepopup>li:not([sep="true"] ):hover a {
+	background-color: #316AC5 !important;
+	color: white;
+}
+
+#taobaohomepopup>li:not([sep="true"] ):hover>.label {
+	padding: 2px 8px;
+}
+
+#tabcontents {
+	background-color: white !important;
+	position: absolute;
+	top: 31px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.tabcontent {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.tabcontent.active {
+	display: block;
+	overflow: auto;
+}
+
+#status>img {
+	width: 100%;
+	height: 2px;
+	position: absolute;
+}
+
+#status>div {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	right: 0;
+	height: 28px;
+	line-height: 28px;
+	padding: 0px 10px;
+	background: url("images/gradient-bottom.png") repeat-x bottom left;
+	color: #5F5F5F;
+	font-size: 9px !important;
+	vertical-align: middle;
+}
+
+#status a{
+	text-decoration: none;
+	color: #5A75CE;
+	cursor: pointer;
+}
+
+#status a:hover {
+	color: #5A75CE;
+}
+
+#accountcontent {
+	line-height: 25px;
+	color: #5F5F5F;
+	overflow: auto;
+	font-size: 13px;
+}
+
+#accountcontent>div {
+	margin: 10px 10px 0px 10px;
+}
+
+#accountcontent button {
+	margin-top: 2px;
+	margin-left: 30px;
+}
+
+#accountcontent input[type="text"] {
+	width: 100%;
+}
+
+#accountcontent li {
+	width: 100%;
+}
+
+#accountcontent li span {
+	float: right;
+	display: none;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background: url(images/destroy.png) no-repeat 0 0;
+}
+#accountcontent li:hover span {
+	display: inline-block;
+}
+#accountcontent li span:hover {
+	 background-position: 0 -20px;
+}
+#settingcontent{
+font-size: 13px;
+color: #5F5F5F;
+line-height: 25px;
+}
+#settingcontent >div{
+margin:20px 10px 0px 10px;
+}
+#settingcontent > input{
+margin:10px 5px 10px 10px;
+}
+#settingcontent p{
+margin:80px 10px 10px 10px;
+padding:5px;
+background:#efefef;
+border:1px solid #efefef;
+border-radius:6px;
+}
+#shopcontent .closeitem{
+	float: right;
+	display: inline-block !important;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background: url(images/destroy.png) no-repeat 0 0;
+}
+#shopcontent .closeitem:hover{
+	background-position: 0 -20px;
+}
+#shopcontent table:hover button{
+display:none !important;
+height:18px;
+font-size:9px;
+padding:0px;
+margin:0px;
+line-height:12px;
+border-color:#FF9900;
+border-radius:2px;
+background-color:white;
+}
+.infotip a{
+color:blue;
+}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="un.js"></script>
+<script type="text/javascript">
+	var PopUp = {
+			bg:chrome.extension.getBackgroundPage(),
+		/**
+		点击或回车搜索
+		 */
+		performSearch : function() {
+			var key = $('#search .text').val();
+			if (key == null)
+				return;
+			key = key.replace(/^\s+|\s+$/, '');
+			if (key == '')
+				return;
+			if(/^https?:/.test(key)){
+				window.open(key);
+				return;
+			}
+			var istaobao=localStorage['select']=='tb';
+			if(istaobao){
+				window.open("http://s.taobao.com/search?q=" + key);
+			}else{
+				window.open("http://s.etao.com/search?q=" + key);
+			}	
+		},
+		//点击关于链接
+		aboutLink : function() {
+		},
+		changeTab:function(tabId){
+			$('.tabcontent.active').removeClass('active');
+			$('#' + tabId + 'content').addClass('active');
+			if(tabId=='shop'){
+				this.showShop();
+			}else if(tabId=='account'){
+				this.showAccount();
+			}else if(tabId=='setting'){
+				this.showSetting();
+			}
+		},
+		showShop:function(){
+			var shop=$('#shopcontent');
+			var html='';
+			var template=this.bg.itemTemplate;
+			var items=this.bg.items.reverse();//后面还需要还原
+			var table;
+			if(items.length===0){
+				html='<div class="infotip" style="font-size: 13px;color:#5F5F5F;margin:100px 30px;text-align:center;line-height:30px;">当前没有宝贝佣金信息<br/>您可以使用上面的搜索框全网搜索商品<br/>&nbsp;&nbsp;<a href="http://www.taobao.com/" target="_blank">淘宝</a>&nbsp;&nbsp;<a href="http://www.etao.com/" target="_blank">一淘</a>'+
+				'&nbsp;&nbsp;<a href="http://www.dangdang.com/" target="_blank">当当</a>'+
+				'&nbsp;&nbsp;<a href="http://www.360buy.com/" target="_blank">京东</a>'+
+				'&nbsp;&nbsp;<a href="http://www.vancl.com/" target="_blank">凡客</a>'+
+				'</div>'
+				shop.html(html);
+				return;
+			}
+			shop.html('');
+			for(var item in items){
+				item=items[item];
+				item.showing=localStorage['showing']||'money';
+				if(item.showing=='money'){
+					item.showing=item.commission+'元';
+				}else{
+					item.showing=parseFloat(item.commission_rate)/100+'%';
+				}
+				table=$(_.template(template,item)).attr('id',item.num_iid);
+				shop.append(table);
+			}
+			this.bg.items.reverse();//还原items顺序
+		},
+		removeItem:function(table){
+			var items=this.bg.items,id=table.attr('id');
+			var item;
+			table.remove();	
+			for(var i=0,l=items.length; i<l; i++){
+				item=items[i];
+				if(item.num_iid==id){
+					items.splice(i,1);
+					if(items.length===0){
+						this.showShop();
+					}
+					chrome.browserAction.setBadgeText({text:items.length===0?'':''+items.length});
+					return;
+				}
+			}
+		},
+		showItemLink:function(table){
+			var id=table.attr('id');
+			PopUp.bg.getUserItemLink(id,function(url){
+				if(!url)return;
+				$('#search input').val(url).select();
+			});
+		},
+		showAccount:function(){
+			var accounts=(localStorage['accounts']||'').split(',');
+			var box=$('#accountcontent');
+			var html='<div><h3>选择账号：</h3>';
+			var checked=localStorage['useaccount']?'':' checked="checked"';
+			html+='<ul><li><input type="radio" onmousedown="PopUp.clickAccount(null,this);return false;" '+checked+'></input>系统账号</li>';
+			for(var acc in accounts){
+				acc=accounts[acc];
+				if(acc==null||acc=='')continue;
+				checked=localStorage['useaccount']==acc?' checked="checked"':'';
+				html+='<li id="li_'+acc+'"><input onmousedown="PopUp.clickAccount(this.parentNode.id.substring(3),this);return false;" type="radio"'+checked+'></input>'+acc+'<span class="del" id="span_'+acc+'" onclick="PopUp.deleteAccount(this.id.substring(5));"></span></li>'
+			}
+			html+='</ul>';
+			html+='<hr/><h3>新建账号：</h3>';
+			html+='<div>输入淘宝会员名(非邮箱地址):<br/><input onchange="PopUp.changedUser();" placeholder="如:myname" type="text" id="taobaouser"></input></div>';
+			html+='<div id="newinfo" style="color:red;"></div>';
+			html+='<button id="testuser" onclick="PopUp.testAccount();">测试账号</button> <button id="newadd" disabled="disabled" onclick="PopUp.addAccount();">添加账号</button></div>';
+			box.html(html);
+		},
+		changedUser:function(){
+			$("#newadd").attr('disabled','disabled');
+		},
+		testAccount:function(){
+			var acc=$('#taobaouser').val();
+			var as=localStorage['accounts']||'';
+			if(acc==null||acc==''){
+				$('#newinfo').html('请填写帐号');
+				return;
+			}
+			if(new RegExp('(^|,)'+acc+'(,|$)').test(as)){
+				$('#newinfo').html('账号'+acc+'已存在');
+				return;
+			}
+			$('#testuser').attr('disabled','disabled');
+			setTimeout(function(){$('#testuser').removeAttr('disabled');},1000);
+			this.bg.getTaobaoUser(acc,function(user){
+				if(user!=null&&user.nick===acc){
+					$('#newinfo').html('账号'+acc+'测试通过');
+					$("#newadd").removeAttr('disabled');
+				}else{
+					$('#newinfo').html('账号'+acc+'测试不通过');
+				}
+			});
+			
+		},
+		clickAccount:function(account,input){
+			if($(input).attr('checked'))return;
+			if(account==null){
+				localStorage.removeItem('useaccount');		
+			}else{
+				localStorage['useaccount']=account;
+			}
+			$('#accountcontent input').removeAttr('checked');
+			$(input).attr('checked','checked');
+			this.updateStatus();
+		},
+		updateStatus:function(){
+			if(localStorage['useaccount']){
+				$('#status-info a').html(localStorage['useaccount']);
+			}else{
+				$('#status-info a').html('系统账号');
+			}
+		},
+		deleteAccount:function(account){
+			if(localStorage['useaccount']==account){
+				$('#accountcontent input:first').attr('checked','checked');
+				localStorage.removeItem('useaccount');
+			}
+			localStorage['accounts']=(localStorage['accounts']||'').replace(new RegExp('(^|,)'+account+'(,|$)'),',');
+			$('#li_'+account).remove();
+			this.updateStatus();
+		},
+		addAccount:function(acc){
+			acc=acc||$('#taobaouser').val()||$('#pid').val();
+			var as=localStorage['accounts']||'';
+			if(new RegExp('(^|,)'+acc+'(,|$)').test(as)){
+				$('#newinfo').html('账号'+acc+'已存在');
+				return;
+			}
+			var html='<li id="li_'+acc+'"><input onmousedown="PopUp.clickAccount(this.parentNode.id.substring(3),this);return false;" type="radio"></input>'+acc+'<span class="del" id="span_'+acc+'" onclick="PopUp.deleteAccount(this.id.substring(5));"></span></li>';
+			$('#accountcontent ul').append(html);
+			as+=','+acc;
+			localStorage['accounts']=as;
+		},
+		showSetting:function(){
+			var box=$('#settingcontent');
+			var html='';
+			html+='<div>设置弹出窗口提示时间:(单位:秒,0为不弹出)</div>';
+			var time=localStorage['poptime'];
+			if(time==null){
+				time=this.bg.defaultTime;
+			}
+			html+='<input type="text" id="poptime" value="'+time+'"></input>';
+			html+='<button onclick="PopUp.saveTime();">保存</button>';
+			html+='<br/>';
+			html+='<div>设置佣金提示信息：</div>';
+			var showing=localStorage['showing']||'money';
+			html+='<input onclick="PopUp.saveShowing();" id="showing-rate" type="radio"'+(showing=='money'?'':' checked')+' name="showing" value="rate">百分比</input><br/>';
+			html+='<input onclick="PopUp.saveShowing();" id="showing-money" type="radio"'+(showing=='money'?' checked':'')+' name="showing" value="money">金额(以实际购买金额*佣金比率为准)</input><br/>';
+			var istaobao=localStorage['select']=='tb';
+			html+='<div style="margin:20px 0px 0px 10px;">设置默认搜索：<select id="select" onchange="localStorage[\'select\']=this.value;"><option value="tb" '+(istaobao?'selected':'')+' >淘宝</option><option value="et" '+(istaobao?'':'selected')+'>一淘</option></select></div>';
+			
+			box.html(html);
+		},
+		saveShowing:function(){
+			var showing=$('#showing-rate').attr('checked')?'rate':'money';
+			localStorage['showing']=showing;
+		},
+		saveTime:function(){
+			var time=$('#poptime').val();
+			time=parseInt(time);
+			if(time||time===0){
+				localStorage['poptime']=time;
+			}else{
+				$('#poptime').val(this.bg.defaultTime);
+			}
+		}
+	};
+	//setup
+	$(function() {
+		$('.tab').click(function() {
+			var self = $(this);
+			if (self.hasClass('active'))
+				return;
+			$('.tab.active').removeClass('active');
+			self.addClass('active');
+			PopUp.changeTab(this.id);
+		});
+		$('.tab:first').trigger('click');
+		$('#search .text').keydown(function(e) {
+			if (e.keyCode === 13) {
+				PopUp.performSearch();
+			}
+		}).focus(function() {
+			$(this.parentNode).attr('focused', 'true');
+		}).blur(function() {
+			$(this.parentNode).removeAttr('focused');
+		});
+		$('#taobaohome div').click(function(event){
+			var pop=$('#taobaohomepopup'),hide=pop.is(':hidden');
+			if(hide){
+				pop.show(100,function(){
+					$(document).one('click',function(){pop.hide(100);});
+				});
+			}
+		});
+		PopUp.updateStatus();
+		$('.closeitem').live('click',function(){
+			PopUp.removeItem($(this).parents('table'));
+		});
+		$('#search input').change(function(){debugger;
+			var self=$(this),text=self.val();
+			if(/^https?:/.test(text)){
+				self.attr('title','Ctrl+C复制 Ctrl+A全选');
+			}else{
+				self.attr('title','');
+			}
+		});
+		$('#shopcontent button').live('click',function(){
+			PopUp.showItemLink($(this).parents('table'));
+			$('#search input').attr('title','Ctrl+C复制 Ctrl+A全选');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="sidebar">
+			<div class="color1"></div>
+			<div class="color2"></div>
+			<div class="color3"></div>
+			<div class="color4"></div>
+			<div class="color5"></div>
+			<div class="color6"></div>
+			<div class="color7"></div>
+		</div>
+
+		<div id="main">
+			<div id="search">
+				<input type="text" title="" class="text" placeholder="搜索商品" maxlength="640"
+					autocomplete="off"> <span title="搜索" class="button"
+					onclick="PopUp.performSearch(event);"></span>
+			</div>
+			<div id="content">
+				<div id="tabs">
+					<div id="shop" class="tab">宝贝</div>
+					<div id="account" class="tab">帐号</div>
+					<div id="setting" class="tab">个性化</div>
+					<div id="taobaohome">
+						<div class="home-button" title="淘宝主页"></div>
+						<div class="home-drop"></div>
+						<ul id="taobaohomepopup" style="display: none;">
+							<li><a href="http://www.taobao.com/" target="_blank">淘宝主页</a>
+							</li>
+							<li><a href="http://www.tmall.com/" target="_blank">淘宝商城</a>
+							</li>
+							<li><a href="http://3c.tmall.com/" target="_blank">电器城</a>
+							</li>
+							<li><a href="http://www.hitao.com/" target="_blank">Hitao</a>
+							</li>
+							<li><a href="http://global.taobao.com/" target="_blank">全球淘</a>
+							</li>
+							<li><a href="http://ju.taobao.com/" target="_blank">聚划算</a>
+							</li>
+							<li sep="true" class="sep"><hr />
+							</li>
+							<li><a href="http://jianghu.taobao.com/" target="_blank">淘江湖</a>
+							</li>
+							<li><a href="http://a.taobao.com/" target="_blank">淘宝门户</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="tabcontents">
+					<div id="shopcontent" class="tabcontent"></div>
+					<div id="accountcontent" class="tabcontent"></div>
+					<div id="settingcontent" class="tabcontent"></div>
+				</div>
+			</div>
+			<div id="status">
+				<img src="images/separator.png" />
+				<div id="status-info">
+					正使用<a href="#" onclick="$('#account').trigger('click');return false;">系统帐号</a>为您生成能获取佣金的购物链接
+				</div>
+			</div>
+		</div>
+		<div class="sidebar bottom">
+			<!-- test taobaoke -->
+			<div class="color7"></div>
+			<div class="color6"></div>
+			<div class="color5"></div>
+			<div class="color4"></div>
+			<div class="color3"></div>
+			<div class="color2"></div>
+			<div class="color1"></div>
+		</div>
+	</div>
+</body>
+</html>

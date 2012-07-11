@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="reset.css" />
+<script type="text/javascript" src="un.js"></script>
+</head>
+<body>
+	<script>
+		function init() {
+			var bg=chrome.extension.getBackgroundPage(),
+			item = bg.latestItem,
+			template=bg.itemTemplate;
+			item.showing=localStorage['showing']||'money';
+			if(item.showing=='money'){
+				item.showing=item.commission+'元';
+			}else{
+				item.showing=parseFloat(item.commission_rate)/100+'%';
+			}
+			document.body.innerHTML = _.template(template, item);
+		}
+		init();
+	</script>
+</body>
+</html>

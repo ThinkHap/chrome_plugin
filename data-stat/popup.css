@@ -1,0 +1,105 @@
+body, form, h1, h2, h3, h4, p, img, ul, li, ol, dl, dt, dd, a, span, input, tr, th, td{margin:0;padding:0;}
+body {font:normal 12px/1.5 "Arial","微软雅黑","Tahoma",sans-serif;}
+li {list-style:none;}
+img {border:0 none;vertical-align:top;}
+table {border-collapse:collapse;border-spacing:0;}
+.clear-fix:after {display:block;visibility:hidden;font-size:0;line-height:0;clear:both;content:"";}  
+.clear-fix {zoom:1;}
+a {color:#000;text-decoration:none;}
+a:hover {text-decoration:underline;}
+
+.wrap {
+    width: 200px;
+    padding: 10px;
+    color:#333;
+}
+
+h1 {
+    font-size:16px;
+    text-align:center;
+}
+
+.box {
+    padding: 10px;
+    margin: 0 auto;
+    box-shadow: 3px 3px 10px #c6c6c6;
+}
+
+.intro {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.check {
+    display:block;
+    width: 92px;
+    height: 32px;
+    line-height:32px;
+    margin: 5px auto 10px;
+    border-radius:3px;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#3D97F1), to(#2B84DF));
+    color: #fff;
+    text-align:center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.check:hover {
+    text-decoration:none;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#3D97F1), to(#3C97F1));
+}
+
+.result {
+    position: relative;
+    display: none;
+}
+
+.result .clear-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    border-radius:3px;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#3D97F1), to(#2B84DF));
+    color: #fff;
+    text-align: center;
+}
+
+.result .clear-btn:hover {
+    text-decoration:none;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#3D97F1), to(#3C97F1));
+}
+
+.result h3 {
+    font-size: 14px;
+}
+
+.result p {
+    padding-left: 20px;
+}
+
+.result > h3 + p {
+    padding: 0;
+    font-weight: bold;
+}
+
+.result > h3 + p + p + p {
+}
+
+.result strong {
+    font-weight: bold;
+    color: #2B84DF;
+}
+
+.result .right {
+    font-weight: bold;
+    color: #72BC00;
+}
+
+.result .error {
+    font-weight: bold;
+    color: #f44;
+}

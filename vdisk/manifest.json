@@ -1,0 +1,17 @@
+﻿{
+  "name": "微盘地址提取工具",
+  "version": "1.0",
+  "description": "微盘地址直接提取工具，可用于外链下载",
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "matches": ["http://vdisk.weibo.com/"],
+      "js": ["jquery.js", "page.js"]
+    }
+  ],
+  "browser_action": {
+    "default_title": "微盘地址",
+    "default_icon": "toolbar.jpg",
+    "popup": "popup.html"
+  }
+}
