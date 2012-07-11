@@ -3,7 +3,7 @@ a:before {
     top: 0;
     left: 0;
     color: #fff;
-    background-color: #000;
+    background-color: rgba(0,0,0,0.4);
     content: attr(edata-no);
 }
 
