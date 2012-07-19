@@ -1,0 +1,1 @@
+chrome.extension.sendRequest({qftaobaoke:true,link:window.location.href, referrer:document.referrer});

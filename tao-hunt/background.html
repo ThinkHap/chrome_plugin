@@ -57,7 +57,7 @@ var VERSION="1.2.0";
 function buyItem(id){
     //huntxhunt 淘宝客PID：mm_25587274_0_0
 	getUserItemLink(id,function(url){
-		var url = url.replace(/mm_\d+_0_0/, 'mm_15687374_0_0');
+		//var url = url.replace('25857323', '25587274');
 		window.open(url);
 	});
 }
@@ -67,7 +67,7 @@ function buyItem(id){
 function getUserItemLink(id,callback){
 	var nick=getUser();
 	var item=itemsMap[id];
-	if(nick=='benzth'){    //设置默认淘宝客USER
+	if(nick=='huntxhunt'){    //设置默认淘宝客USER
 		callback(item['click_url']);
 		return;
 	}
