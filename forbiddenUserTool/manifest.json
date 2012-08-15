@@ -1,0 +1,18 @@
+{
+    "name": "ForbiddenUserTool@chdbbs.com",
+    "version": "1.0",
+    "description": "方便快捷的禁止用户@落雁峰",
+    "permissions": [
+        "tabs", "notifications", "http://*.chdbbs.com/admincp.php*"
+    ],
+    "browser_action": {
+          "default_icon": "hap.png",
+          "popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*.chdbbs.com/admincp.php*"],
+            "js": ["kissy-min.js"]
+        }
+    ]
+}
