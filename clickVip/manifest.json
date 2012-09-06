@@ -1,0 +1,13 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "mofang.png",
+      "default_title": "\u62BD\u7EA2\u5305",
+      "popup": "popup.html"
+   },
+   "description": "eTao\u81EA\u52A8\u62BD\u7EA2\u5305 by ManiuSoft",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2IK5L3hYtvS8KkVbaCsThmlv9vHaTXxnUFWO/yJ5rytXdz2QPYmkscdU7x+uu9g+BzKTBDqbwpS3gw5IqXY8nC8eEwGaRjcMJi7D9z+Pe0SjNgRyCmoGvdOlOVmM8NmoxWW2e4pK3kzxGjsaGsKTmsuRhIXz482Aen8dQ8TXu4wIDAQAB",
+   "name": "eTao\u81EA\u52A8\u62BD\u7EA2\u5305 by ManiuSoft",
+   "permissions": [ "http://*/*", "https://*/*", "tabs" ],
+   "version": "1.0"
+}
