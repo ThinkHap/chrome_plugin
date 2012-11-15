@@ -1,0 +1,26 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "taobao.ico",
+      "default_name": "嗨皮淘(only for 孖非鱼)",
+      "popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "fanxian.js" ],
+      "matches": [ "http://*.taobao.com/*", "http://*.tmall.com/*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": false,
+      "js": [ "search.js" ],
+      "matches": [ "http://*.taobao.com/*", "http://*.tmall.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "嗨皮淘,淘你所爱...(only for 孖非鱼)",
+   "icons": {
+      "128": "taobao.png"
+   },
+   "name": "嗨皮淘,淘你所爱...(only for 孖非鱼)",
+   "permissions": [ "tabs", "http://*.taobao.com/*", "http://*.tmall.com/*", "http://taohunt.sinaapp.com/*", "notifications" ],
+   "version": "1.2.0"
+}

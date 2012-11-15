@@ -1,44 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="un.js"></script>
-</head>
-<body>
-<!-- 
-1. nick 替换全局nick即可;
-2. 或者设置pid，两者都设，则以pid为准
--->
-<script type="text/template" id="item-template">
-     <table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="position:relative;border: 1px solid #E6E6E6;border-width:0px 0px 1px 0px;">
-		<tr>
-			<td rowspan="2" align="center" width="25%">
-				<div style="margin:5px; width: 80px;height:80px;">
-					<a target="_blank" dataid="<%=num_iid%>" href="#" onclick="return false;" style=" cursor:default; width: 80px; margin:0px;padding:0px;height: 80px; overflow:hidden;">
-						<img style="margin:0px;border:none; width:80px;" src="<%=pic_url%>">
-					</a>
-				</div>
-			</td>
-		<td colspan="2" width="75%" >
-			<span class="closeitem" style="display:none"></span>
-			<a target="_blank" onclick="return false;" href="#" dataid="<%=num_iid%>"  style="cursor:default;text-decoration:none;color:black;height:40px;width:190px; overflow:hidden;margin:8px;text-align:left;line-height:20px;font-size:15px;"><%=title%></a>
-			<button style="display:none; background-color:#FF9900; color:#EEE;">获取链接</button>
-		</td>
-	</tr>
-	<tr>
-		<td nowrap="nowrap" width="105px" style="font-size:14px;" >
-			佣金:<span style="font-weight:600;line-height:30px;color:#CC0000;"><%=showing%></span> 
-		</td>
-		<td nowrap="nowrap" width="85px" >
-			<a target="_blank" dataid="<%=num_iid%>" href="#" onclick="chrome.extension.getBackgroundPage().buyItem(this.getAttribute('dataid'));window.close();return false;">
-				<img name="" style="margin:0px; pandding:0px;line-height:24px;vertical-align: text-bottom;border:none;width:85px;"  src="images/buy.png">
-			</a>
-		</td>
-	</tr>
-	</table>
-</script>
-<script>
 //条目展示模板
 var itemTemplate=document.getElementById("item-template").innerHTML;
 //最后展示条目，供item.html使用
@@ -55,18 +14,13 @@ var searchItems=[];
 var MAX_SIZE=40;
 //程序版本
 var VERSION="1.2.0";
-//用户淘宝昵称
-//var nick = "huntxhunt";
-var nick = "benzth";
-//淘客pid,是mm_xxxx_0_0这种格式中间的"xxxx". nick和pid至少需要传递一个,如果2个都传了,将以pid为准
-var pid = '15687374';
 /**
  * 购买此商品，打开用户的购买链接
  */
 function buyItem(id){
     //huntxhunt 淘宝客PID：mm_25587274_0_0
 	getUserItemLink(id,function(url){
-		//var url = url.replace(/mm_\d+_0_0/, 'mm_32489072_0_0');
+		//var url = url.replace('25857323', '25587274');
 		window.open(url);
 	});
 }
@@ -76,8 +30,7 @@ function buyItem(id){
 function getUserItemLink(id,callback){
 	var nick=getUser();
 	var item=itemsMap[id];
-	//if(nick=='孖非鱼'){    //设置默认淘宝客USER
-	if(nick==nick){    //设置默认淘宝客USER
+	if(nick=='huntxhunt'){    //设置默认淘宝客USER
 		callback(item['click_url']);
 		return;
 	}
@@ -95,10 +48,7 @@ function getUserItemLink(id,callback){
 		}
 	}
 	ids=ids.substring(0,ids.length-1);
-	var url='http://taohunt.sinaapp.com/itemconvert.php?id='+ids+'&nick='+nick;
-    if(pid){
-	    url='http://taohunt.sinaapp.com/itemconvert.php?id='+ids+'&pid='+pid;
-    }
+	var url='http://taohunt.sinaapp.com/itemconvert.php?id='+ids+'&nick='+nick+'&v='+VERSION;
 	var jqxhr = $.getJSON(encodeURI(url), function(data) {
         data = data.taobaoke_items_convert_response.taobaoke_items.taobaoke_item
 		if(!(data&&data.length))return;
@@ -113,8 +63,6 @@ function getUserItemLink(id,callback){
 		if(theidurl){
 			callback(theidurl);
 		}
-        //console.log(theidurl);
-        //console.log(nick);
 	});
 }
 /**
@@ -191,8 +139,7 @@ function getItemid(link) {
  * @returns
  */
 function getUser(){
-	//return localStorage['useaccount']||'孖非鱼';  //设置默认淘宝客user
-	return nick;  //设置默认淘宝客user
+	return localStorage['useaccount']||'huntxhunt';  //设置默认淘宝客user
 }
 /**
  * 访问商品信息网页
@@ -217,10 +164,7 @@ function visitItem(id, referrer){
 		}else{
 			items=[id];
 		}
-		var url='http://taohunt.sinaapp.com/itemconvert.php?id='+items.join(',')+'&nick='+ nick +'&v='+VERSION+'&referrer="'+referrer+'"';
-        if(pid){
-		    url='http://taohunt.sinaapp.com/itemconvert.php?id='+items.join(',')+'&pid='+ pid +'&v='+VERSION+'&referrer="'+referrer+'"';
-        }
+		var url='http://taohunt.sinaapp.com/itemconvert.php?id='+items.join(',')+'&v='+VERSION+'&referrer="'+referrer+'"';
 		var jqxhr = $.getJSON(encodeURI(url), function(data) {
             data = data.taobaoke_items_convert_response.taobaoke_items.taobaoke_item
 			var result = (data&&data.length)?data:[];
@@ -287,7 +231,3 @@ function onRequest(request, sender, callback) {
 	}
 };
 chrome.extension.onRequest.addListener(onRequest);
-
-</script>
-</body>
-</html>
