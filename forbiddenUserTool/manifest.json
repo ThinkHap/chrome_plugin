@@ -1,7 +1,7 @@
 {
     "name": "ForbiddenUserTool@chdbbs.com",
-    "version": "2.0",
-    "description": "F4禁止用户@落雁峰",
+    "version": "2.1",
+    "description": "F4/W/Del禁止用户@落雁峰",
     "manifest_version": 2,
     "permissions": [
         "tabs", "notifications", "http://*.chdbbs.com/admincp.php*"
